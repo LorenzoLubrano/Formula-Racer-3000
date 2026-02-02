@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Racer 3000</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js (Global Build - r128 for compatibility with JS examples) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Post-Processing Dependencies (Order Matters) -->
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://unpkg.com/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Game Container -->
+    <div id="game-container"></div>
+
+    <!-- UI Overlay -->
+    <div id="ui-layer">
+
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen active">
+            <h1 class="glitch" data-text="NEON RACER">NEON RACER</h1>
+            <div class="menu-content">
+                <h3>SELECT COLOR</h3>
+                <div class="color-picker">
+                    <div class="color-btn selected" data-color="0xff0000" style="background: #ff0000;"></div>
+                    <div class="color-btn" data-color="0x00ff00" style="background: #00ff00;"></div>
+                    <div class="color-btn" data-color="0x0000ff" style="background: #0000ff;"></div>
+                    <div class="color-btn" data-color="0xffff00" style="background: #ffff00;"></div>
+                    <div class="color-btn" data-color="0x00ffff" style="background: #00ffff;"></div>
+                    <div class="color-btn" data-color="0xff00ff" style="background: #ff00ff;"></div>
+                    <div class="color-btn" data-color="0xffffff" style="background: #ffffff;"></div>
+                    <div class="color-btn" data-color="0x222222" style="background: #222222;"></div>
+                </div>
+                <button id="start-btn" class="btn-primary">START RACE</button>
+            </div>
+            <p style="margin-top:20px; font-size: 14px; opacity: 0.7;">CONTROLS: ARROWS / WASD + SPACE TO JUMP</p>
+        </div>
+
+        <!-- HIDDEN IN GAME HUD -->
+        <div id="score-board" style="display: none;">
+            <div class="hud-item">SCORE: <span id="score">0</span></div>
+            <div class="hud-item">SPEED: <span id="speed">0</span> KM/H</div>
+        </div>
+
+        <div id="game-over-screen" class="screen">
+            <h1 class="glitch" data-text="CRASHED">CRASHED</h1>
+            <p>FINAL SCORE: <span id="final-score">0</span></p>
+            <button id="retry-btn" class="btn-primary">RETRY</button>
+            <button id="menu-btn" class="btn-primary"
+                style="margin-top: 15px; background: #555; font-size: 18px; padding: 10px 30px;">MAIN MENU</button>
+        </div>
+    </div>
+
+    <!-- Game Logic (Run as normal script, no module) -->
+    <script src="game.js"></script>
+
+</body>
+
+</html>
